@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CornHub 🌽</title><style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --orange: #ff9000;
+  --bg: #181818;
+  --card: #242424;
+  --text: #fff;
+  --muted: #aaa;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+header {
+  background: #080808;
+  padding: 15px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #333;
+}
+
+.logo {
+  font-size: 29px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+
+.logo span {
+  color: #000;
+  background: var(--orange);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.search {
+  display: flex;
+  flex: 1;
+  max-width: 480px;
+}
+
+.search input {
+  width: 100%;
+  padding: 12px;
+  background: #292929;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search button {
+  background: var(--orange);
+  border: none;
+  padding: 0 17px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.login {
+  border: 1px solid #555;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.signup {
+  background: var(--orange);
+  color: #000;
+  padding: 11px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  padding: 16px 5%;
+  background: #111;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+nav a {
+  color: #ccc;
+  font-size: 14px;
+}
+
+nav a:hover,
+nav .active {
+  color: var(--orange);
+}
+
+main {
+  max-width: 1400px;
+  margin: auto;
+  padding: 30px 5%;
+}
+
+.hero {
+  background: linear-gradient(110deg, #30200c, #191919 65%);
+  border: 1px solid #3c3020;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 35px;
+}
+
+.hero h1 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.hero h1 span {
+  color: var(--orange);
+}
+
+.hero p {
+  color: var(--muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.orange-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  font-size: 21px;
+  border-left: 4px solid var(--orange);
+  padding-left: 10px;
+}
+
+.section-heading a {
+  color: var(--orange);
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px 15px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.thumbnail {
+  height: 155px;
+  background: linear-gradient(135deg, #35250e, #292929 55%, #151515);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnail::before {
+  content: "🌽";
+  font-size: 75px;
+  opacity: .65;
+  filter: drop-shadow(0 0 18px #ff900055);
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--orange);
+  color: #111;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.card:hover .play {
+  opacity: 1;
+}
+
+.duration {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  background: #000;
+  padding: 4px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.card-info {
+  padding: 12px;
+}
+
+.card-info h3 {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.meta {
+  color: #999;
+  font-size: 12px;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--orange);
+  background: #382b18;
+  padding: 5px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.promo {
+  margin-top: 40px;
+  padding: 30px;
+  text-align: center;
+  background: #222;
+  border-radius: 7px;
+}
+
+.promo h2 {
+  margin-bottom: 10px;
+}
+
+.promo p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 40px;
+  padding: 25px 5%;
+  border-top: 1px solid #333;
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+}
+
+footer p {
+  margin-bottom: 12px;
+}
+
+footer a {
+  color: var(--orange);
+  margin: 0 8px;
+}
+
+@media (max-width: 950px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  header {
+    padding: 14px 4%;
+  }
+
+  .search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  nav {
+    padding: 14px 4%;
+    gap: 20px;
+  }
+
+  main {
+    padding: 22px 4%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+  }
+
+  .thumbnail {
+    height: 120px;
+  }
+
+  .hero {
+    padding: 22px;
+  }
+
+  .hero h1 {
+    font-size: 25px;
+  }
+
+  .card-info h3 {
+    font-size: 13px;
+  }
+
+  .login {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 350px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbnail {
+    height: 180px;
+  }
+}
+</style></head><body><header>
+  <a class="logo" href="https://clck.ru/3Wk3qu">Corn<span>Hub</span></a>  <form class="search" action="https://clck.ru/3Wk3qu">
+    <input type="search" placeholder="Search CornHub...">
+    <button type="submit">🔍</button>
+  </form><a class="login" href="https://clck.ru/3Wk3qu">Log In</a>
+<a class="signup" href="https://clck.ru/3Wk3qu">Sign Up</a>
+
+</header><nav>
+  <a class="active" href="https://clck.ru/3Wk3qu">🏠 Home</a>
+  <a href="https://clck.ru/3Wk3qu">🔥 Trending</a>
+  <a href="https://clck.ru/3Wk3qu">⭐ Popular</a>
+  <a href="https://clck.ru/3Wk3qu">🆕 New</a>
+  <a href="https://clck.ru/3Wk3qu">🌽 Categories</a>
+  <a href="https://clck.ru/3Wk3qu">👑 Premium</a>
+</nav><main>  <section class="hero">
+    <h1>Welcome to <span>CornHub</span> 🌽</h1>
+    <p>It's CornHub. You already know why you're here. 😂</p>
+    <a class="orange-btn" href="https://clck.ru/3Wk3qu">
+      Explore Now →
+    </a>
+  </section>  <div class="section-heading">
+    <h2>🔥 Trending Now</h2>
+    <a href="https://clck.ru/3Wk3qu">View All →</a>
+  </div>  <section class="grid" id="videos"></section>  <section class="promo">
+    <h2>Ready for more Corn? 🌽</h2>
+    <p>Click below and see where the fun takes you.</p>
+    <a class="orange-btn" href="https://clck.ru/3Wk3qu">
+      Let's Go 🔥
+    </a>
+  </section></main><footer>
+  <p>© 2026 CornHub 🌽 · The internet's corniest corner.</p>
+  <a href="https://clck.ru/3Wk3qu">About</a>
+  <a href="https://clck.ru/3Wk3qu">Privacy</a>
+  <a href="https://clck.ru/3Wk3qu">Contact</a>
+</footer><script>
+const destination = "https://clck.ru/3Wk3qu";
+
+const videos = [
+  ["The Cornfield Chronicles 🌽", "12:45", "125K views", "TRENDING"],
+  ["When the Corn Hits Different 😂", "08:32", "98K views", "POPULAR"],
+  ["The Ultimate Corn Experience", "21:16", "76K views", "NEW"],
+  ["Corn After Dark 🌙", "15:09", "64K views", "FEATURED"],
+  ["Fresh From the Field 🌽", "10:20", "51K views", "TRENDING"],
+  ["Kernel Level Entertainment", "18:42", "42K views", "POPULAR"],
+  ["The Great Corn Adventure", "09:58", "35K views", "NEW"],
+  ["Once You Pop, You Can't Stop 😂", "14:11", "29K views", "FEATURED"]
+];
+
+const grid = document.getElementById("videos");
+
+videos.forEach(([title, duration, views, tag]) => {
+  const card = document.createElement("a");
+  card.className = "card";
+  card.href = destination;
+
+  card.innerHTML = `
+    <div class="thumbnail">
+      <span class="play">▶</span>
+      <span class="duration">${duration}</span>
+    </div>
+    <div class="card-info">
+      <h3>${title}</h3>
+      <p class="meta">${views} · Recently</p>
+      <span class="tag">${tag}</span>
+    </div>
+  `;
+
+  grid.appendChild(card);
+});
+</script></body>
+</html>
